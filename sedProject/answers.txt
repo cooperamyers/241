@@ -1,0 +1,669 @@
+Use vimdiff to help highlight differences between files (original, then changed version)
+
+
+
+Q1: COMPLETE
+
+We are changing -or to -our
+
+"color", "honor", "behavior", and "humor"
+
+
+
+Script:
+
+#!/usr/bin/env bash
+
+sed -E 's/color/colour/g;s/honor/honour/g;s/behavior/behaviour/g;s/humor/humour/g' /usr/share/dict/american-english  > new_dict.txt
+
+
+
+Q2: COMPLETE (note:make sure command is in pink in vim. I basically just replaced FOOPs with if then piped that into another sed command to replace BEEPBOOP, then store it in MyFile.c. If its working then when you run the clang, then the “./a.out” command, then “MAY THE FORCE BE WITH YOU” will appear on the screen)
+
+
+
+The file 'prog.c' in the 241 directory comes from the International Obfuscated C
+
+Code Contest (IOCCC). This is an entry from 2022. It should compile without
+
+problem, but when I downloaded it, somehow all the "if"s turned into "FOOPS",
+
+and all the "/**" turned into "BEEPBOOP". Copy this file to your directory with the
+
+name "MyFile.c" and fix this code! Use two sed commands, piping the first's
+
+output into the second (using the "|"). To check that you have fixed it, run
+
+clang MyFile.c
+
+./a.out
+
+If it works, you'll know it. Ctrl-C will quit.
+
+
+
+#!/usr/bin/env bash
+
+sed -E 's/FOOPS/if/g' /home/woodriir/241/prog.c | sed -E 's/BEEPBOOP/\/\*\*/g' > MyFile.c
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Q3: COMPLETE
+
+The faculty page at https://cis.gvsu.edu/faculty needs some work. Use the
+
+command "wget https://cis.gvsu.edu/faculty" to download the html file
+
+(which will be called "faculty") to your directory. I am just going to work with the
+
+html, so I don't want any javascript code showing up. Write a command that will
+
+delete <script> and </script> tags and everything between them. Send the
+
+output to a file called "faculty.index". Hint: we have used addresses like "1,4" to
+
+show lines 1-4 of a file. We can do the same with regexes.
+
+
+
+#!/usr/bin/env bash
+
+
+
+sed -E 's/<\/script>/<\/script>\n/g' faculty | sed -E '/<script.*>/,/<\/script>/d' > faculty.index
+
+
+
+Q4: COMPLETE
+
+Very soon we are going to start learning about C programming. The C standard
+
+doesn't tell us the minimum and maximum values our different types can hold (we
+
+will learn about this soon - instead it bases sizes on the size of a char). The values 
+
+can be found on individual systems though, by looking at the /usr/include/limits.h
+
+file (except for floating point types). This file has a lot of junk in it though. Use sed
+
+to only list the data type names and the sizes they hold. You can do this by only
+
+looking for lines that start with a #define statement. Sample output might look like:
+
+...
+
+INT_MIN(-INT_MAX - 1)
+
+INT_MAX2147483647
+
+UINT_MAX4294967295U
+
+LONG_MIN(-LONG_MAX - 1L)
+
+...
+
+Put it in a file called "clean_limits.h".
+
+
+
+#!/usr/bin/env bash
+
+
+
+sed -E -n '/\#[ \t]*define/p' /usr/include/limits.h > clean_limits.h
+
+
+
+For the same range he has above here’s what I have. Not sure if there is a reason why we wouldn’t include some of these.
+
+
+
+#  define INT_MIN       (-INT_MAX - 1)
+
+#  define INT_MAX       2147483647
+
+#  define UINT_MAX      4294967295U
+
+#   define LONG_MAX     9223372036854775807L
+
+#   define LONG_MAX     2147483647L
+
+#  define LONG_MIN      (-LONG_MAX - 1L)
+
+
+
+
+
+Q5: COMPLETE
+
+In 1997 a movie named "Gattaca" came out. It was named using the four letters used in DNA - "g" for Guanine, "c" for Cytosine, "a" for Adenine, and "t" for Thymine. It was a great movie, that explored the ethics of customizing DNA (among other things). One of my engineers doesn't like the movie. I want to reinforce to him how awesome it is. Copy the file "dna.txt" from my 241/txt_files directory to your repository. Change every occurrence of "gattaca" to "@@GREAT MOVIE@@". However, modify the file in place, and automatically create a backup file called dna.txt.ORIG (read up on the "-i" flag in the man pages). This will be a single sed command.
+
+
+
+First copy file:
+
+
+
+cd /home/woodriir/241/txt_files/
+
+cp dna.txt
+
+
+
+This is what I got:
+
+sed -E -i.ORIG 's/gattaca/\@\@GREATMOVIE\@\@/g' dna.txt
+
+
+
+
+
+Q6: COMPLETE
+
+The file named "file" in my 241 directory is a message from me to you. Unfortunately, it is in hex. Use an ASCII table and create a text file that has multiple sed swap expressions ("s/ORIGINAL/NEWTEXT/g"). Put one on each line. Change the hex value to the alphabetic equivalent. For instance, in ASCII, hex value 51 is "Q". You don't need to have every character, just enough to decode the message. You can run your file of commands by using the "-f" flag. Send the output to a file called "decoded". Note: you need your expressions to work in numeric order or things may get ugly! 
+
+
+
+Create the text file
+
+sed -E ‘s/ORIGINAL/NEWTEXT/g’ /home/woodriir/241/file
+
+
+
+
+
+Here is what I have started, swapping each hexadecimal value to the character. 
+
+
+
+This worked for me:
+
+Put “file” in your project directory using a copy command
+
+Create “scriptFile” which will contain all of the commands to be used in the sed expression
+
+Here are the commands:
+
+s/0a/\n/g
+
+s/41/A/g
+
+s/42/B/g
+
+s/43/C/g
+
+s/44/D/g
+
+s/45/E/g
+
+s/46/F/g
+
+s/47/G/g
+
+s/48/H/g
+
+s/49/I/g
+
+s/4a/J/g
+
+s/4b/K/g
+
+s/4c/L/g
+
+s/4d/M/g
+
+s/4e/N/g
+
+s/4f/O/g
+
+s/50/P/g
+
+s/51/Q/g
+
+s/52/R/g
+
+s/53/S/g
+
+s/54/T/g
+
+s/55/U/g
+
+s/56/V/g
+
+s/57/W/g
+
+s/58/X/g
+
+s/59/Y/g
+
+s/5A/Z/g
+
+
+
+They contain all capital letters and the line feed, which are the only characters needed to decode the hex.
+
+I made a bash file, but it doesn’t matter if you just want to use the command line for the sed expression:
+
+sed -f scriptFile file > decoded
+
+
+
+This uses -f to take all commands from scriptFile, executes them on file, then stores the output in decoded.
+
+
+
+Once you run the command, you can use “less decoded” to see the output. If I’m right, it should say “SUPERSTAR” in all caps and then have an extra line afterwards.
+
+
+
+
+
+
+
+Q7: Complete
+
+On the radio the other day was the song "Callin' My Phone". I only heard the last third or so of the song. I'm getting older and can't hear as well as I could "back in the day", so I didn't catch all the lyrics. I downloaded the E-rated lyrics to a file called "lyrics". I want to start at the last line of the file and read the lyrics in reverse up to line 50. Don't print out anything before that (I haven't heard those yet, don't spoil it for me!). Save the file as "ending_lyrics".
+
+
+
+Copy lyrics file from 241 to project directory.
+
+Original Lyrics:
+
+Steady callin’my phone
+
+I done told you before that it’s over, leave me ‘lone
+
+Know it’s hurtin’you to see me gone
+
+Dark clouds, you gon’see me storm
+
+I won’t go back
+
+But trust me, you’re gon’hold that
+
+Hold that (Mmm, mmm)
+
+Get you off my mind now
+
+I can’t get you off my mind now
+
+I can’t get you off my mind now
+
+I can’t get you off my mind now (Mmm, mmm)
+
+I can’t get you off my mind now
+
+I can’t get you off my mind now
+
+I can’t get you off my mind now
+
+I can’t get you off my mind now (Mmm, mmm)
+
+I ain’t tryna play these games no more
+
+I don’t wanna be textin’your name no more
+
+I ain’t tryna feel this pain no more
+
+And I’m sorry, but my feelings ain’t the same no more (No)
+
+Used to be my homie, you ain’t gang no more (No)
+
+I am not a person you could claim no more (No)
+
+Traumatized, hoping it don’t rain no more
+
+You done put me through some things, I done changed my aura
+
+Now all around the world, I explore her, no Dora
+
+New bands, I might drip out in Dior
+
+Shawty phat, shawty straight heat, no Florida
+
+Bad and she know it, for herself, I applaud her
+
+No needs, yeah, I’m talkin’my boo
+
+So please, let me know when I’m through
+
+And it’s all ’cause what’s true, shawty
+
+I been told you I won’t lose (Mmm)
+
+Steady callin’ my phone (Brrt)
+
+I done told you before that it’s over, leave me ‘lone (Brrt)
+
+Know it’s hurtin’ you to see me gone
+
+Dark clouds, you gon’ see me storm
+
+I won’t go back (Go back)
+
+But trust me, you’re gon’hold that
+
+Hold that (Mmm, mmm)
+
+Get you off my mind now (Ooh, wow)
+
+I can’t get you off my mind now (Yeah, yeah)
+
+I can’t get you off my mind now (My mind)
+
+I can’t get you off my mind now (Mmm, mmm) (Alright)
+
+I can’t get you off my mind now (Woah)
+
+I can’t get you off my mind now (Woah)
+
+I can’t get you off my mind now (Yeah)
+
+I can’t get you off my mind now (Mmm, mmm)
+
+I ain’t tryna play no games, my love
+
+I’m one of a kind, couldn’t fake, my love
+
+Earthquake, make somethin’shake, my love
+
+
+
+Line 50 and onwards (this needs to be reversed):
+
+
+
+Most of them can’t even relate, my love
+
+Used to be gang, oh, now you’re not gang
+
+Used to have fun, no, now you got shame
+
+Used to catch flights, but now I’m not playin’
+
+Play on words, she love it when a person sing
+
+I ain’t tryna play your game no more
+
+No, you can’t wear my chain no more
+
+We are not a thing, can’t take no more
+
+Waitin’on your king, you could wait some more
+
+Yeah, I remember days when I used to adore her
+
+Funny how this poop just flipped like a quarter
+
+Get a new thing, I’m a Fendi and Dior her (Mmm, mmm)
+
+Get a mood swing, I’ll be gone by tomorrow
+
+Steady callin’my phone (Brrt)
+
+I done told you before that it’s over, leave me ‘lone (Yeah, yeah)
+
+Know it’s hurtin’you to see me gone
+
+Dark clouds, you gon’see me storm
+
+I won’t go back (I won’t go back)
+
+But trust me, you’re gon’hold that (Hold that)
+
+Hold that (Mmm, mmm)
+
+Get you off my mind now (Mind)
+
+I can’t get you off my mind now (Mind)
+
+I can’t get you off my mind now (Mind)
+
+I can’t get you off my mind now (Mmm, mmm) (Mind)
+
+I can’t get you off my mind now (Mind)
+
+I can’t get you off my mind now (Mind)
+
+I can’t get you off my mind now (Yeah)
+
+I can’t get you off my mind now (Mmm, mmm)
+
+I can’t
+
+Use this command:
+
+sed -n '50,$p' lyrics |sed '1!G;h;$!d' > ending_lyrics
+
+
+
+It prints out the last 50 lines then pipes it into another sed command that reverses the lines of the file. TBH I don’t know how I just looked it up online and it works.
+
+After using command here are the lyrics that are outputted:
+
+This should be right I think
+
+
+
+I can’t
+
+I can’t get you off my mind now (Mmm, mmm)
+
+I can’t get you off my mind now (Yeah)
+
+I can’t get you off my mind now (Mind)
+
+I can’t get you off my mind now (Mind)
+
+I can’t get you off my mind now (Mmm, mmm) (Mind)
+
+I can’t get you off my mind now (Mind)
+
+I can’t get you off my mind now (Mind)
+
+Get you off my mind now (Mind)
+
+Hold that (Mmm, mmm)
+
+But trust me, you’re gon’ hold that (Hold that)
+
+I won’t go back (I won’t go back)
+
+Dark clouds, you gon’ see me storm
+
+Know it’s hurtin’ you to see me gone
+
+I done told you before that it’s over, leave me ‘lone (Yeah, yeah)
+
+Steady callin’ my phone (Brrt)
+
+Get a mood swing, I’ll be gone by tomorrow
+
+Get a new thing, I’m a Fendi and Dior her (Mmm, mmm)
+
+Funny how this poop just flipped like a quarter
+
+Yeah, I remember days when I used to adore her
+
+Waitin’ on your king, you could wait some more
+
+We are not a thing, can’t take no more
+
+No, you can’t wear my chain no more
+
+I ain’t tryna play your game no more
+
+Play on words, she love it when a person sing
+
+Used to catch flights, but now I’m not playin’
+
+Used to have fun, no, now you got shame
+
+Used to be gang, oh, now you’re not gang
+
+Most of them can’t even relate, my love
+
+
+
+
+
+
+
+Q8:COMPLETE
+
+. Let's write a bash script that gets some system information for us. This bash script
+
+will have the following lines in it:
+
+• "lscpu" will tell you information about the processors. Use sed to capture and
+
+print the line that just the number of CPUs on it. 
+
+• "free -h" will show us memory information. Write a sed line (it may have multiple
+
+expressions separated by ";" that will only display the "Mem:" line, and also
+
+changes the "Gi" to " Gigabytes" (note the space before the "G").
+
+• "df -h" shows us disk information. Find the information for the volumes that have a
+
+size of a terabyte or more.
+
+• "date" gives us date information. Use a multi-line sed script to change the output
+
+from one formatted as
+
+"Fri 26 Feb 2021 11:40:14 AM EST"
+
+to one formatted as
+
+"Friday, 26 February 2021.11:40:14 a.m. Eastern Standard"
+
+CPU(s): 8
+
+=======
+
+Memory:
+
+=======
+
+ total used free shared buff/cache available
+
+Mem: 15 Gigabytes 5.2 Gigabytes 555Mi 244Mi 9.8 Gigabytes 9.7 Gigabytes
+
+Disks:
+
+======
+
+192.168.216.7:/volume1/homes 10T 4.7T 5.4T 47% /home
+
+192.168.216.7:/volume1/RESEARCH_DATA 1.0T 69G 955G 7% /RESEARCH_DATA
+
+Date:
+
+=====
+
+Friday, 26 February 2021.11:40:14 a.m. Eastern Standard
+
+You will need to add other lines to the file (such as echo statements) to output the
+
+separators, titles, etc. The file should be called "hwinfo.sh", and I should be able to
+
+get the above output with
+
+./hwinfo.sh
+
+
+
+
+
+
+
+Create hwinfo.sh script with #!/usr/bin/env bash at top
+
+ lscpu | sed -E -n '/^CPU\(s\)/p'
+
+
+
+
+
+
+
+
+
+date | sed -E 's/Fri/Friday,/; s/Sat/Saturday,/;s/Sun/Sunday,/;s/Mon/Monday,/;s/Tue/Tuesday,/;s/Thu/Thursday,/;s/Feb/February/;s/Mar/March/;s/Apr/April/;s/Jun/June/;s/Jul/July/;s/Aug/August/;s/Sep/September/;s/Nov/November/;s/Dec/December/;s/Jan/January/;s/AM/a\.m\./;s/PM/p\.m\./;s/EST/Eastern Standard/;s/CST/Central Standard/;s/PST/Pacific Standard/;s/MST/Mountain Standard/'| sed -E 's/ /\./4'
+
+
+
+
+
+| sed -E 's/ /\./4' will replace the 4th occurrence of a space with a period.
+
+
+
+
+
+Script:
+
+#!/usr/bin/env bash
+
+  
+
+lscpu | sed -E -n '/^CPU\(s\)/p'
+
+echo '======='
+
+echo 'Memory:'
+
+echo '======='
+
+free -h | sed -n '1,2p' | sed 's/Gi/ Gigabytes/g'
+
+echo ''
+
+echo 'Disks:'
+
+echo '======='
+
+df -h | sed -E -n '/[0-9]*T/p'
+
+echo ''
+
+echo 'Date:'
+
+echo '======='
+
+date | sed -E 's/Fri/Friday,/; s/Sat/Saturday,/;s/Sun/Sunday,/;s/Mon/Monday,/;s/Tue/Tuesday,/;s/Thu/Thursday,/;s/Feb/February/;s/Mar/March/;s/Apr/April/;s/Jun/June/;s/Jul/July/;s/Aug/August/;s/Sep/September/;s/Nov/November/;s/Dec/December/;s/Jan/January/;s/AM/a\.m\./;s/PM/p\.m\./;s/EST/Eastern Standard/;s/CST/Central Standard/;s/PST/Pacific Standard/;s/MST/Mountain Standard/'| sed -E 's/ /\./4'
+
+
+
+
+
+
+
+
