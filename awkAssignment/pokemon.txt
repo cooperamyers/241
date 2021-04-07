@@ -1,0 +1,176 @@
+Most Powerful Pokemon is :
+
+
+
+The highest total: 780
+
+
+
+The most powerful pokemon: 
+
+
+
+MewtwoMega Mewtwo X,MewtwoMega Mewtwo Y,RayquazaMega Rayquaza
+
+
+
+The Average of Each Column:
+
+
+
+Total: 435.103
+
+
+
+HP: 69.2588
+
+
+
+Attack: 79.0012
+
+
+
+Defense: 73.8425
+
+
+
+SP Atk: 72.82
+
+
+
+SP Def: 71.9025
+
+
+
+Speed: 54622
+
+
+
+Most Powerful Grass Pokemon: SceptileMega Sceptile with 630
+
+
+
+Most Powerful Poison Pokemon: GengarMega Gengar with 600
+
+
+
+Most Powerful Fire Pokemon: GroudonPrimal Groudon with 770
+
+
+
+Most Powerful Flying Pokemon: RayquazaMega Rayquaza with 780
+
+
+
+Most Powerful Dragon Pokemon: LatiasMega Latias with 700
+
+
+
+Most Powerful Water Pokemon: KyogrePrimal Kyogre with 770
+
+
+
+Most Powerful Bug Pokemon: 
+
+
+
+PinsirMega Pinsir
+
+ScizorMega Scizor
+
+HeracrossMega Heracross
+
+Genesect 
+
+
+
+All with 600
+
+
+
+Most Powerful Normal Pokemon: Arceus with720
+
+
+
+Most Powerful Electric Pokemon: Zekrom with 680
+
+
+
+Most Powerful Ground Pokemon: GarchompMega Garchomp with 700
+
+
+
+The average power of Grass pokemon is: 411.375
+
+
+
+The average power of Poison pokemon is: 386.102
+
+
+
+The average power of Fire pokemon is: 452.304
+
+
+
+The average power of Flying pokemon is: 428.122
+
+
+
+The average power of Dragon pokemon is: 512.811
+
+
+
+The average power of Water pokemon is: 415.15
+
+
+
+The average power of Bug pokemon is: 376.034
+
+
+
+The average power of Normal pokemon is: 395.552
+
+
+
+The average power of Electric pokemon is: 433.22
+
+
+
+The average power of Ground pokemon is: 420.593
+
+
+
+The average power of Fairy pokemon is: 391.618
+
+
+
+The average power of Fighting pokemon is: 466.653
+
+
+
+The average power of Psychic pokemon is: 457.462
+
+
+
+The average power of Steel pokemon is: 475.683
+
+
+
+The average power of Rock pokemon is: 437.941
+
+
+
+The average power of Ice pokemon is: 441.742
+
+
+
+The average power of Dark pokemon is: 442.63
+
+
+
+My interesting calculation:140
+
+
+
+This is for those who are team Water, this is the difference between Water and Grass when you take their maximums.
+
