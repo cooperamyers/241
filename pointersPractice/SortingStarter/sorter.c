@@ -32,7 +32,7 @@ void sort(char** contents, int size){
 		key = array[k];
 		j = k-1;
 
-		while(j >= 0 && array[j] > key){
+		while(j >= 0 && strcmp(array[j], key) > 0){
 			array[j+1] = array[j];
 			j = j-1;
 		}
@@ -45,7 +45,7 @@ void sort(char** contents, int size){
 	int counter = 0;
 
 	for(q=0; q < size; ++q){
-		for(w=0; w < strlen(array[i]); ++w){
+		for(w=0; w < strlen(array[q]); ++w){
 			contents[0][counter] = array[q][w];
 			counter++;
 		}
