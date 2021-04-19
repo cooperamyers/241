@@ -27,7 +27,7 @@ void sort(char** contents, int size){
 		str = strtok(NULL, "\n");
 	}
 
-	// Starting my for loop to search through info
+	// Starting my for loop to search through info and sort using insertion
 	for (k = 1; k < size; k++){
 		key = array[k];
 		j = k-1;
@@ -53,6 +53,7 @@ void sort(char** contents, int size){
 		counter++;
 	}	
 
+	// Free the memory from the array
 	int e;
 	for(e = 0; e < size; ++e){
 		free(array[e]);
