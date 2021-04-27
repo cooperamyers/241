@@ -132,7 +132,7 @@ Student* six(){
  * create a hunk of memory that can be used as an array
  * of size 10, and will set the pointer correctly so
  * that the "array" is usable in main.
- * Set the 10th (index 9) element equal to
+ * Set the 4th (index 3) element equal to
  *
  * "Luigi" (first_name)
  * "Mario" (last_name)
@@ -142,14 +142,13 @@ Student* six(){
 void seven(Student** students){
 	// Creating the array of size ten again with parameter.
 	*students = (Student*) malloc(sizeof(Student) * 10);
-	// Array index 9 is students[9].
-	students[9]->first_name = "Luigi";
-	students[9]->last_name = "Mario";
-	students[9]->g_number = 2;
-	students[9]->gpa = 3.54;
-	// This is my only method that does not work when tested.
+	// Array index 3 is students[3].
+	(*students)[3].first_name = "Luigi";
+	(*students)[3].last_name = "Mario";
+	(*students)[3].g_number = 2;
+	(*students)[3].gpa = 3.54;
 	// I think my first portion is correct creating the memory.
-	// I started by copying my student* six, but the compiler said to use pointers rather than ".".
+	// I started by copying my student* six, but the compiler said to use pointers.
 }
 
 /**
